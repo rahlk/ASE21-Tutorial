@@ -1,0 +1,23 @@
+Created-By: 1.8.0 (IBM Corporation)
+IBM-App-ForceRestart: install,
+ uninstall
+IBM-AppliesTo: io.openliberty;productVersion="18.0.0.4"
+IBM-Feature-Version: 2
+IBM-InstallTo: core
+IBM-License-Agreement: wlp/lafiles/LA
+IBM-ProductID: io.openliberty
+IBM-ShortName: microProfile-1.0
+Subsystem-Content: com.ibm.websphere.appserver.cdi-1.2; type="osgi.subsystem.feature",
+ com.ibm.websphere.appserver.jaxrs-2.0; type="osgi.subsystem.feature",
+ com.ibm.websphere.appserver.jsonp-1.0; type="osgi.subsystem.feature",
+ com.ibm.ws.require.java8; version="[1.0.0,1.0.200)"
+Subsystem-Description: %description
+Subsystem-License: https://www.eclipse.org/legal/epl-v10.html
+Subsystem-Localization: OSGI-INF/l10n/com.ibm.websphere.appserver.microProfile-1.0
+Subsystem-ManifestVersion: 1
+Subsystem-Name: MicroProfile 1.0
+Subsystem-SymbolicName: com.ibm.websphere.appserver.microProfile-1.0; visibility:=public; singleton:=true
+Subsystem-Type: osgi.subsystem.feature
+Subsystem-Vendor: IBM Corp.
+Subsystem-Version: 7.0.0
+Tool: Bnd-4.0.0.201805111645

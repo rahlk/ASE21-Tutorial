@@ -1,0 +1,46 @@
+Cardinal Post-Codegen Report (v2.0.0r27)
+
+# ******************************************** #
+# Partition web contains the following classes #
+# ******************************************** #
+===< Proxy >===
+    /var/application/monolith-web/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementAction.java
+===< Service >===
+===< Original >===
+    /var/application/monolith-web/DefaultWebApplication/src/main/java/HitCount.java
+    /var/application/monolith-web/DefaultWebApplication/src/main/java/SnoopServlet.java
+===< Dummy >===
+    /var/application/monolith-web/DefaultApplication-ear/src/test/java/wasdev/DefaultApplication/it/EndpointIT.java
+    /var/application/monolith-web/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/Increment.java
+    /var/application/monolith-web/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementSSB.java
+===< Utility >===
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/CardinalException.java
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/CardinalLogger.java
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/CardinalString.java
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/ClusterObjectManager.java
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/KluInterface.java
+    /var/application/monolith-web/application/src/main/java/com/ibm/cardinal/util/SerializationUtil.java
+
+# *************************************************** #
+# Partition partition0 contains the following classes #
+# *************************************************** #
+===< Proxy >===
+===< Service >===
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementActionService.java
+===< Original >===
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/Increment.java
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementAction.java
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementSSB.java
+===< Dummy >===
+    /var/application/monolith-partition0/DefaultApplication-ear/src/test/java/wasdev/DefaultApplication/it/EndpointIT.java
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/HitCount.java
+    /var/application/monolith-partition0/DefaultWebApplication/src/main/java/SnoopServlet.java
+===< Utility >===
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/config/JAXRSConfiguration.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/CardinalException.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/CardinalLogger.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/CardinalString.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/ClusterObjectManager.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/KluInterface.java
+    /var/application/monolith-partition0/application/src/main/java/com/ibm/cardinal/util/SerializationUtil.java
+

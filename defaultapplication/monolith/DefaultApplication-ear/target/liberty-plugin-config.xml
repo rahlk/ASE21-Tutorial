@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<liberty-plugin-config>
+    <installDirectory>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp</installDirectory>
+    <serverDirectory>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer</serverDirectory>
+    <userDirectory>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr</userDirectory>
+    <serverOutputDirectory>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer</serverOutputDirectory>
+    <serverName>DefaultApplicationServer</serverName>
+    <configFile>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/src/main/liberty/config/server.xml</configFile>
+    <appsDirectory>apps</appsDirectory>
+    <looseApplication>false</looseApplication>
+    <stripVersion>false</stripVersion>
+    <installAppPackages>project</installAppPackages>
+    <applicationFilename>DefaultApplication.ear</applicationFilename>
+    <assemblyArtifact>
+        <groupId>com.ibm.websphere.appserver.runtime</groupId>
+        <artifactId>wlp-javaee7</artifactId>
+        <version>18.0.0.4</version>
+        <type>zip</type>
+    </assemblyArtifact>
+    <assemblyArchive>/home/ibmdemo/.m2/repository/com/ibm/websphere/appserver/runtime/wlp-javaee7/18.0.0.4/wlp-javaee7-18.0.0.4.zip</assemblyArchive>
+    <assemblyInstallDirectory>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty</assemblyInstallDirectory>
+    <refresh>false</refresh>
+    <installAppsConfigDropins>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/configDropins/defaults/install_apps_configuration_1491924271.xml</installAppsConfigDropins>
+    <projectType>ear</projectType>
+    <aggregatorParentId>DefaultApplication</aggregatorParentId>
+    <aggregatorParentBasedir>/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized</aggregatorParentBasedir>
+    <projectCompileDependency>DefaultApplication:DefaultWebApplication:0.0.1-SNAPSHOT</projectCompileDependency>
+</liberty-plugin-config>

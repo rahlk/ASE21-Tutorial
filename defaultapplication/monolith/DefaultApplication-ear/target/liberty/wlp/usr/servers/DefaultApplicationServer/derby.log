@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Thu Nov 12 06:54:04 PST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0175-bcf3-0272-00001599b420 
+on database directory /home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/resources/DefaultDB with class loader com.ibm.ws.classloading.internal.AppClassLoader@62598408 
+Loaded from file:/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/shared/resources/derby-10.13.1.1.jar
+java.vendor=Private Build
+java.runtime.version=1.8.0_222-8u222-b10-1~14.04-b10
+user.dir=/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer
+os.name=Linux
+os.arch=amd64
+os.version=4.4.0-47-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Nov 12 06:55:36 PST 2020:
+Shutting down instance a816c00e-0175-bcf3-0272-00001599b420 on database directory /home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/resources/DefaultDB with class loader com.ibm.ws.classloading.internal.AppClassLoader@62598408 
+----------------------------------------------------------------
+Thu Nov 12 06:55:36 PST 2020: Shutting down Derby engine
+----------------------------------------------------------------

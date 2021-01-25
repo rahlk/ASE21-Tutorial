@@ -1,0 +1,76 @@
+PH00027 AFTER MIGRATING TO WAS V9, THE CWSID0046E ERROR IS SEEN
+PH00304 WAS LIBERTY NOT RESPECTING MAX CONNECTION POOL SETTING
+PH01681 CASE THEN AND ELSE SCALAR EXPRESSION CONSTANTS SHOULD NOT BE CASTED TO CASE OPERAND TYPE
+PH02049 Cross-scripting vulnerability in the CacheMonitor
+PH02063 Potential security bypass in WebSphere Application Server with Expression Language EL
+PH02234 ISSUE WHEN PROCESSING THE CALLER TOKEN FOR USERNAMETOKEN
+PH02750 JAVA.LANG.CLASSCASTEXCEPTION OCCURS IN OIDCCLIENTIMPL.LOGOUT
+PH02811 Privilege escalation vulnerability in WebSphere Application Server
+PH02955 Unable to use SAF Keyring for collective SSH communication
+PH03004 CWWKS1721E: THE RESOURCE SERVER RECEIVED AN ERROR IT WAS ATTEMPTING TO VALIDATE THE ACCESS TOKEN. Z/OS CONNECT EE
+PH03014  A PROPERTY IS SET IN THE REQUESTCONTEXT, BUT THE INTERCEPTOR DOES NOT READ THIS PROPERTY RESULTING IN A NULLPOINTEREXCEPTI
+PH03040 Fixpack 18.0.0.3 can not be installed on IBMi
+PH03232 Incorrect server state reported in a multicontroller collective
+PH03418 ISSUE WITH THE LIBERTY OPENID CONNECT COOKIE
+PH03549 When the zosWlm-1.0 feature is enabled, the health indicator of the server is only ever set to 2 percent.
+PH03768 ENTRYNOTFOUNDEXCEPTION SAFGRP IS NOT A VALID GROUP
+PH04136 Attempt to create user in SCIM returns 500 HTTP status code with DefaultParentNotFoundException message
+PH04137 UPDATING WEBSPHERE LIBERTY FOR Z/OS TO FIXPACK 18.0.0.3 FAILS WITH NULLPOINTEREXCEPTION
+PH04147 Attempt to update user ID in SCIM returns 500 HTTP status code with IllegalArgumentException message
+PH04243 EC3 abend reason code 20F00600 occurs after a 422 abend.
+PH04282 ERROR AUTHENTICATING WHEN LIBERTY SERVER TRIES TO CONNECT TO A BACK-LEVEL ANGEL PROCESS.
+PH04652 WebSphere Application Server Liberty for z/OS provides no metrics for usageMetering-1.0
+PH04653 Updated CPU limit (--cpus) not recognized by usage metering feature
+PH05071 JVM hang when calling GarbageCollectorMXBean.getLastGcInfo for usageMetering-1.0
+PH05100 OUTOFMEMORY FAILURE IN LIBERTY UNDER CICS WHEN CONNECTED TO AN ANGEL PROCESS.
+PH05414 OpenIdConnect client subject might not contain Id Token
+PI85709 add watchdog timer to write waits on closing
+PI87244 FIREWALL PREVENTS THE LIBERTY JAVA BATCH TOOL FROM DISPLAYING JOBLOGS
+PI97786 ECLIPSELINK THROWS "ARGUMENT TYPE MISMATCH" FOR JPQL CASE EXPRESSION
+PI99263 SERVLETCONTEXT.GETREALPATH() RETURNS NULL FOR RESOURCE IN EXTENDED DOCUMENT ROOT
+PI99672 REMOVE THE FIRST_ROWS HINT FROM ORACLE V10+ PAGINATION QUERIES
+OLGH1438 JAAS login module shared library is missing protection domain
+OLGH3113 ArrayIndexOutOfBounds in LdapConfigManager.setFilters()
+OLGH3919 Future does not return immediately when timeout fires when using Timeout with Async
+OLGH4132 full tmp dir prevents server from reading server.env during startup
+OLGH4135 Pull in MyFaces 2.3.2 once released
+OLGH4202 Migration of JMS delivery delay.
+OLGH4332 Need to fix first line of output from Liberty JSON log format to actually be JSON
+OLGH4535 LogRecordContext API is missing from /wlp/dev/api/ibm jars
+OLGH4760 Expose a couple of packages to the thread-context in jsf-2.3
+OLGH4792 Fix BundleContext is no longer valid error on server shutdown
+OLGH4853 Provision compatible javax.annotations API for SpringBoot applications
+OLGH4898 H2: fix some HTTP/2 code and test issues uncovered by further parallel stream stress testing
+OLGH4912 Fix missing doPriv in unwrap
+OLGH4913 JSR375: When JASPIC is enabled, a login panel pops up even EVERYONE role is assigned.
+OLGH4955 Externalize multiple httpOptions
+OLGH4960 Faces Servlet mappings defined in web-fragment.xml do not work - jsf-2.2
+OLGH5045 Add a recursion counter for messagehandlers into BaseTraceService
+OLGH5076 NullPointerException in ClassLoadingServiceImpl
+OLGH5088 SpringBoot applications fail to start when a non jar file is in the library directory
+OLGH5114 Test Failure (Liberty - Mac EBC - 20180915-0112): PolicyExecutorTest.testStartTimeout
+OLGH5126 HTTP/2 engine must tolerate priority frames received in any state and better handle flow control problems
+OLGH5149 update openidconnect client way of sending credentials to userinfo endpoint
+OLGH5154 Flush queued actions when an app is removed
+OLGH5164 /metrics output got truncated on Japanese locale
+OLGH5244 MYFACES-4252 Classpath._searchDir can throw NullPointerException
+OLGH5277 Fix Java 2 Security access issue in kernel DefaultFileStreamFactory
+OLGH5293 Deadlock in ZipFileArtifactNotifierImpl
+OLGH5339 H2: Fix race condition in multi-stream writing logic
+OLGH5345 Improve our serviceability around page search and chasing referrals for Ldap
+OLGH5383 Occasional HTTP/2 MessageSentException: Message already sent 
+OLGH5395 SSL config not used by RestClient
+OLGH5425 JAX-RS Client does not pool HTTPS connections
+OLGH5428 Fix bug in server package server-root command
+OLGH5441 JMSContextInjectionBean uses deprecated CDI method
+OLGH5453 Microprofile appProperties element not showing up in schema
+OLGH5465 Pull MYFACES-4260 to both jsf-2.2 and jsf-2.3 features
+OLGH5483 release bug:  implement PH02361 in development stream
+OLGH5498 When using advanced connection manager property numConnectionsPerThreadLocal and connection fail during cleanup, the connection managers connection pool may fail to remove failing connections resulting in no connections being available.
+OLGH5510 Deliver fix for CVE-2014-7810
+OLGH5560 MessageSentException intermittently during flushBuffers
+OLGH5585 EJB timer ScheduleExpression serialization incompatibility
+OLGH5590 Failed to createMinimumEscapeHandler for unknown jaxb class
+OLGH5637 Expose jsf 2.3 org.apache.myfaces.push.cdi to thread context class loader
+OLGH5647 Fix --include default to have /usr for server and shared folder
+OLGH5779 Too many threads during low-load operation

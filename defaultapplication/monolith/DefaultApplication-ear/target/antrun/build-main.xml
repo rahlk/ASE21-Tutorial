@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <unzip src="/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/src/main/resources/DefaultDB.zip" dest="/home/ibmdemo/m2m_DefaultApplication/sample.DefaultApplication.modernized/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/resources"/>
+</target>
+</project>

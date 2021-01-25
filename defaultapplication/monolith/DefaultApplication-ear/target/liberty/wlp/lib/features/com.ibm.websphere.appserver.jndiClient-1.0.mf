@@ -1,0 +1,20 @@
+Created-By: 1.8.0 (IBM Corporation)
+IBM-AppliesTo: io.openliberty;productEdition=Open;productVersion="18.0.0.4"
+IBM-Feature-Version: 2
+IBM-InstallTo: core
+IBM-License-Agreement: wlp/lafiles/LA
+IBM-ProductID: io.openliberty
+Subsystem-Content: com.ibm.websphere.appserver.javax.cdi-1.2; ibm.tolerates:="2.0"; type="osgi.subsystem.feature",
+ com.ibm.websphere.appserver.jndi-1.0; type="osgi.subsystem.feature",
+ com.ibm.websphere.appserver.transaction-1.2; type="osgi.subsystem.feature",
+ com.ibm.websphere.appserver.clientContainerRemoteSupportCommon-1.0; type="osgi.subsystem.feature",
+ com.ibm.ws.jndi.remote.client; version="[1.0.0,1.0.200)"
+Subsystem-Description: %description
+Subsystem-License: https://www.eclipse.org/legal/epl-v10.html
+Subsystem-Localization: OSGI-INF/l10n/com.ibm.websphere.appserver.jndiClient-1.0
+Subsystem-ManifestVersion: 1
+Subsystem-SymbolicName: com.ibm.websphere.appserver.jndiClient-1.0; visibility:=private; singleton:=false
+Subsystem-Type: osgi.subsystem.feature
+Subsystem-Vendor: IBM Corp.
+Subsystem-Version: 1.0.0
+Tool: Bnd-4.0.0.201805111645
