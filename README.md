@@ -1,116 +1,114 @@
-# Mono2Micro Sample Application
+# Transforming Monolithic Applications to Microservices with Mono2Micro
 
-Please read the user guide to learn more about Mono2Micro and the various tasks of application data collecting, running the analysis, viewing the analysis results, and generating starter micrservices java code.
+![](https://ibm-cloud-architecture.github.io/modernization-playbook/static/215a27d8fbf89d8d756427f855bc4f3a/e8c66/1-m2m.png)
 
-To get you started, here are some examples of monolith applications, data and analysis files, and microservices code
+## Contents
+  - [Contents](#contents)
+  - [Why this tutorial matters?](#why-this-tutorial-matters)
+  - [Tutorial sessions](#tutorial-sessions)
+    - [Session 1: Background and Case-Studies](#session-1-background-and-case-studies)
+    - [Session 2: Assessing applications and recommending microservice partitioning with Mono2Micro](#session-2-assessing-applications-and-recommending-microservice-partitioning-with-mono2micro)
+    - [Session 3: Automated Conﬁguration Discovery](#session-3-automated-conﬁguration-discovery)
+    - [Session 4: Validating Transformed Applications](#session-4-validating-transformed-applications)
+  - [Hands-on Lab](#hands-on-lab)
+    - [Overview](#overview)
+    - [Prerequisites](#prerequisites)
+      - [Setup](#setup)
+    - [Part 1: Instrumenting your java code to collect runtime traces](#part-1-instrumenting-your-java-code-to-collect-runtime-traces)
 
-## DefaultApplication - Application Data, Analysis, Source
+## Why this tutorial matters?
 
-Monolith source code: ```./defaultapplication/monolith```
+Enterprises are progressively migrating production workloads to the cloud to take advantage of cloud-native characteristics such as faster infrastructure and service delivery, flexibility, scalability, reliability, and security. Monolithic applications must often be fragmented into cloud-native designs, such as microservices, in order to take advantage of these characteristics.
 
-Monolith application data: ```./defaultapplication/application-data/```
+A microservice encompasses a small, well-defined set of business functions and communicates with other services using lightweight mechanisms, which are frequently implemented as RESTful APIs. According to a recent research, just 20% of enterprise workloads are in the cloud, and those that are were predominantly developed for native cloud architectures. This leaves approximately 80% of legacy applications on-premises, awaiting refactoring and modernization in preparation for the cloud.
 
-Mono2Micro analysis (initial recommendations): ```./defaultapplication/mono2micro-analysis```
+This tutorial will examine the rationale for updating and transferring legacy systems to the cloud, backed by illustrative industrial case studies. Then, we'll walk through a step-by-step tool-supported approach for transitioning a monolithic Java program into microservices. Following that, a hands-on virtual lab will allow participants to apply their newly acquired knowledge to a real-world enterprise application. Finally, we will finish the tutorial with a discussion of interesting future paths for study in the field of application modernization more broadly.
 
-Mono2Micro analysis (further customized by hand): ```./defaultapplication/mono2micro-analysis-custom```
+## Tutorial sessions
 
+### Session 1: Background and Case-Studies
 
-## DefaultApplication - Refactored to microservices with Mono2Micro
+We will kick-off the tutorial with an introductory session that will motivate the challenge of application modernisation. First, we'll go through the theoretical and practical foundations of a microservice architecture. Then we'll talk about why application modernisation is such a difficult task. Following that, we will go through an overview of practitioners' demands as well as the trials and tribulations of embarking on the application modernization path. The presentation finishes with a case study and some cutting-edge methods to application modernisation. The session concludes with a case study and some state-of-the-art approaches for application modernization.
 
-Refer to the Mono2Micro user guide for detailed guidance on how to further develop the initial partitions recommended by the AI analysis to customize the final partitioning of the application (see above), refactor the application's server config files, build config files, and JEE deployment descriptor files, and containerize the partitions to run as these microservices in Docker.
+**Presenter:** Jin Xiao
 
-### See the Microservices application in action!
+**Slides:** TBD
 
-In just a few simple steps below, you can build and deploy the microservices to local docker containers on your workstation, and see them running for yourself. 
+### Session 2: Assessing applications and recommending microservice partitioning with Mono2Micro
 
-**Prerequisites:** 
+In this session, we will go through methodologies for analyzing application code and extracting runtime traces in depth. We'll show how we can use this to (a) reason about application behavior, (b) extract business logic, and (c) find optimum microservice candidates. We will talk about how AI may be used to provide microservice suggestions automatically using static and/or dynamic analysis approaches. We will investigate clustering, graph embedding, and evolutionary search strategies in order to generate module partitions with desirable qualities such as strong cohesion and low coupling. The session concludes with a review of several software metrics for evaluating the quality and efficiency of decomposition.
 
-- Docker 17.06 CE or higher, which supports multi-stage builds
+**Presenter:** Anup Kalia
 
-**Steps:** 
+**Slides:** TBD
 
-Clone this github repository to your local workstation:
-```
-git clone https://github.com/kpostreich/m2m-ws-sample
-```
-Change directory to the refactored microservices source code:
-```
-cd ./m2m-ws-sample/defaultapplication/microservices/
-```
+### Session 3: Automated Conﬁguration Discovery
 
-First, create a Docker network for the microservices to communicate:
-```
-docker network create defaultappNetwork
+This session is about managing the configuration of refactored monolithic apps. When restructuring monolithic applications into a microservice architecture, determining which microservice requires which configuration parameter may be difficult and time-consuming. For example, if you switch frameworks at the same time, such as from SprintBoot to Quarkus, it becomes more difficult since the configuration format, parameter names, and values may change. This session will go through ways for dealing with such difficulties. In particular, we explain ways for discovering configuration information in programs, as well as approaches for transforming it from the source format you have to the target format you want.
 
-docker network list
-```
+**Presenter:** John Rofrano
 
-Build and start the defaultapplication-web container. This container is the web front end. It contains the html, jsp, and servlets servlets. 
+**Slides:** TBD
 
-```
-cd ./defaultapp-web
+### Session 4: Validating Transformed Applications
 
-docker build -t defaultapp-web  . | tee web.out
+This session focuses on strategies for verifying the transformation of a monolithic program to a microservice application. In this session, we will first explain a broad approach to test-driven modernization, which consists of a series of stages for implementing testing in diverse modernization situations in an effective and efficient manner. Then, we'll show you a tool that implements some of the approach's phases, specifically for unit testing Java apps. The program allows for automated test creation as well as differential testing. It generates tests based on a unique coverage criterion that is tailored to application partitioning (but also applicable more broadly) and exercises methods based on combinations of different types of method parameters, with the goal of validating inter-partition communication in the transformed application. The program uses combinatorial test design (CTD) to method signatures to construct a CTD model from which an automated test plan with varying interaction levels is built. Following that, a test generator creates test sequences that cover the test plan and publishes them as executable JUnit test cases. We will use an example Java program to showcase the tool, with tests built on the monolithic application version and performed against the converted application.
 
-docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9080:9080 defaultapp-web:latest
-```
+**Presenter:** Saurabh Sinha
 
-Build and start the defaultapplication-partition0 container. This container is the Increment Service backend for hitcount. It contains the EJB and Derby DB. 
+**Slides:** TBD
 
-```
-cd ./defaultapp-partition0
+## Hands-on Lab
 
-docker build -t defaultapp-partition0 . | tee part0.out
+In this virtual lab, you will:
 
-docker run --name=defaultapp-partition0 --hostname=defaultapp-partition0 --network=defaultappNetwork -d -p 9081:9080 defaultapp-partition0:latest
-```
+1) Run Mono2Micro’s Bluejay tool to analyze the Java source code, instrument it, and produce the analysis files that will be used as input to the Mono2Micro’s AI engine.
 
-**Test the Microservices**
+2) Use Mono2Micro’s Flicker tool to gather time stamps and use case data as you run test cases against the instrumented version of the monolith application.
 
-Once all the containers have started successfully, the DefaultApplication can be opened at `http://localhost:9080/`
+3) Use Mono2Micro’s Oriole analyzer tool (AIPL) to produce the initial microservices recommendations.
 
-```
-- run snoop service from the web browser 
+4) Use Mono2Micro’s UI tool to visualize the microservice recommendations and modify the initial recommendations to further customize the microservice recommendations.
 
-    (The username and password is: user1 / change1me)
+### Prerequisites
 
-- run the hitcount service, choosing each of the following options from the application in the web browser. 
-  
-  These all run in the defaultapp-web container. 
-    a. Servlet instance variable
-    b. Session state (create if necessary)
-    c. Existing session state only
+The following prerequisites must be completed prior to beginning this lab:
 
-  This calls the IncrementAction Service in the defaultapp-container0 container. It is an EJB and uses JPA to persist to the Derby database. 
-    d. Enterprise Java Bean (JPA)
+- A UNIX based operating system (windows users please enable [WSL support](https://docs.microsoft.com/en-us/windows/wsl/install))
+- The latest Docker (3.5.2)
+- Git CLI (needed to clone the GitHub repo)
+- Java 1.8.0
+- Maven 3.6.3 (or above)
+- 3 GB free storage for the Mono2Micro Docker images and containerized microservices
 
-```
+### Setup
 
-**View the logs in the running containers**
+_NOTE: Windows users, please use WSL._
 
-Quickly view the logs from the microservices. 
+1. Download and install [docker](https://docs.docker.com/get-docker/). 
+   _(For windows, see instructions [here](https://docs.docker.com/desktop/windows/wsl/))_
 
-**Note:** The logging level in the micorservices has been set to **INFO** in order to log the details of cross partition service calla, and the response data. To chnage the logging level, refere to the **Logging** section below. 
+2. Pull the docker images for `mono2micro-aipl` and `mono2micro-ui`:
+    ```sh
+    docker pull ibmcom/mono2micro-bluejay
 
-```
-docker logs defaultapp-web
+    docker pull ibmcom/mono2micro-aipl
 
-    INFO: [IncrementAction] Calling service http://defaultapp-partition0:9080/rest/IncrementActionService/getTheValue with form: {}
-    [err] Nov 20, 2020 8:20:27 PM com.ibm.defaultapplication.IncrementAction
+    docker pull ibmcom/mono2micro-ui
+    ```
 
+3. Verfiy
 
-docker logs defaultapp-partition0
+    ```sh
+    docker images | grep ibmcom
+    ```
 
-    INFO: [IncrementAction] Calling service http://defaultapp-partition0:9080/rest/IncrementActionService/getTheValue with form: {}
-    [err] Nov 20, 2020 8:20:27 PM com.ibm.defaultapplication.IncrementAction
-```
+    You should see the following:
 
+    ```sh
+    ibmcom/mono2micro-bluejay   latest    090f164b442e   6 weeks ago   359MB
+    ibmcom/mono2micro-aipl      latest    06671bd874e4   6 weeks ago   478MB
+    ibmcom/mono2micro-ui        latest    06a651a522bb   6 weeks ago   2.87GB
+    ```
 
-## Logging
-
-To modify the level of logging and tracing in the Mono2Mirco generated code and see more or less information about what's happening in the code flow within and between microservices, change the ```DEFAULT_LOG_LEVEL``` variable in the each partition's ```com.ibm.cardinal.util.CardinalLogger``` Java source file located in the ```cardinal-utils``` module. Then rebuild and run the updated services. 
-
-
-
-
-
+### Part 1: Instrumenting your java code to collect runtime traces
