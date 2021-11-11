@@ -3,6 +3,8 @@
 ![](https://ibm-cloud-architecture.github.io/modernization-playbook/static/215a27d8fbf89d8d756427f855bc4f3a/e8c66/1-m2m.png)
 
 ## Contents
+
+- [Transforming Monolithic Applications to Microservices with Mono2Micro](#transforming-monolithic-applications-to-microservices-with-mono2micro)
   - [Contents](#contents)
   - [Why this tutorial matters?](#why-this-tutorial-matters)
   - [Tutorial sessions](#tutorial-sessions)
@@ -10,11 +12,13 @@
     - [Session 2: Assessing applications and recommending microservice partitioning with Mono2Micro](#session-2-assessing-applications-and-recommending-microservice-partitioning-with-mono2micro)
     - [Session 3: Automated Conﬁguration Discovery](#session-3-automated-conﬁguration-discovery)
     - [Session 4: Validating Transformed Applications](#session-4-validating-transformed-applications)
-  - [Hands-on Lab](#hands-on-lab)
-    - [Overview](#overview)
+  - [Preparing for the Hands-on Lab](#preparing-for-the-hands-on-lab)
     - [Prerequisites](#prerequisites)
-      - [Setup](#setup)
+    - [Setup](#setup)
+    - [Sample Application](#sample-application)
+  - [The Hands-on Lab](#the-hands-on-lab)
     - [Part 1: Instrumenting your java code to collect runtime traces](#part-1-instrumenting-your-java-code-to-collect-runtime-traces)
+    - [Part 2: Instrumenting your java code to collect runtime traces](#part-2-instrumenting-your-java-code-to-collect-runtime-traces)
 
 ## Why this tutorial matters?
 
@@ -58,7 +62,7 @@ This session focuses on strategies for verifying the transformation of a monolit
 
 **Slides:** TBD
 
-## Hands-on Lab
+## Preparing for the Hands-on Lab
 
 In this virtual lab, you will:
 
@@ -85,10 +89,11 @@ The following prerequisites must be completed prior to beginning this lab:
 
 _NOTE: Windows users, please use WSL._
 
-1. Download and install [docker](https://docs.docker.com/get-docker/). 
+1. Download and install [docker](https://docs.docker.com/get-docker/).
    _(For windows, see instructions [here](https://docs.docker.com/desktop/windows/wsl/))_
 
 2. Pull the docker images for `mono2micro-aipl` and `mono2micro-ui`:
+
     ```sh
     docker pull ibmcom/mono2micro-bluejay
 
@@ -111,4 +116,81 @@ _NOTE: Windows users, please use WSL._
     ibmcom/mono2micro-ui        latest    06a651a522bb   6 weeks ago   2.87GB
     ```
 
+4. A sample application ([see below](#sample-application)) that will be used in this tutorial will available in this repository. Please clone a copy of this repository before the session.
+
+    ```sh
+    git clone https://github.com/rahlk/ASE21-Tutorial
+    ```
+
+### Sample Application
+
+We will use a sample application to demonstrate how Mono2Micro works. The sample monolithic application performs two simple functionalities, in the backend:
+
+   * Snoop: to check for requests and display information about it; and
+   * Hit Count: to demonstrate various methods that can be used to increment a counter, e.g.,  existing sessions, application
+   attributes, and request attributes, etc.
+
+There is also a front end component with a simple UI which includes the HTML, JSPs, and Servlets, all needed to run the application and interact with it on a browser. Something like this:
+
+![](https://ibm-cloud-architecture.github.io/modernization-playbook/static/d6d9799edb7beab1d12d94d4634d4924/f79d7/34-defaultapp-9080.png)
+
+## The Hands-on Lab
+
 ### Part 1: Instrumenting your java code to collect runtime traces
+
+In this part of the tutorial, you will run **BlueJay** , which instruments the monolithic Java program to log entry and exit times in each method. In essense, it performs a static analysis  to gather a detailed overview of the Java code in the monolith, for use by Mono2Micro’s AI analyzer tool to come up with recommendations on how to partition the monolith application.
+
+To run BlueJay, we use the following command:
+
+  ```sh
+  docker run -e LICENSE=accept --rm -it -v /your/absolute/path/to/defaultapplication/:/var/application ibmcom/mono2micro-bluejay /var/application/monolith out
+  ```
+
+  ![Screen Shot 2021-11-11 at 11 43 29 AM](https://user-images.githubusercontent.com/1433964/141336296-a3783766-f9ea-40f6-ad0a-1a3990fd365c.png)
+
+__Note: The command displays the directory where the output files were generated, as illustrated below.__
+
+In this example: `/your/absolute/path/to/defaultapplication/monolith-klu`
+
+If you look inside `/your/absolute/path/to/defaultapplication/monolith-klu`, you'll see the following:
+
+![image](https://user-images.githubusercontent.com/1433964/141337140-8494bbb9-4bf7-4a8b-b6ab-e9f91668e0b3.png)
+
+Bluejay creates two .json files in the in the monolith-klu directory:
+
+- refTable.json
+- symTable.json
+
+These json file capture various details and metadata about each Java class such as:
+
+- method signatures
+- class variables and types
+- class containment dependencies (when one classes uses another class as a instance variable type, or method return/argument type)
+- class inheritance
+- package dependencies
+- source file locations
+
+You can look at the instrumentation in the code, for example:
+
+```sh 
+vim /your/absolute/path/to/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
+```
+
+As illustrated below, you will find `System.out.println(…)` statements for the entry and exit of each method in the classes.
+
+This trace data captures the Thread ID and Timestamp during the test case execution flow, which you will perform later in the lab. 
+
+![Screen Shot 2021-11-11 at 12 00 53 PM 1](https://user-images.githubusercontent.com/1433964/141338567-b9cbc4ba-13c6-48d8-9b40-5112f61bb2d5.png)
+
+Finally, change the permissions on `monolith-klu` directory, so that it can be updated by the current user.
+
+```sh
+sudo chmod -R 777 /your/absolute/path/to/defaultapplication/monolith-klu
+```
+
+### Part 2: Instrumenting your java code to collect runtime traces
+
+The next step is to run test cases against the instrumented monolith application to capture runtime data for analysis. Since this is a simple application, you will run the test cases manually using the applications web UI. There are only two use cases for this simple application.: Snoop and Hit Count.
+
+As these use cases are run on the instrumented monolith application, you will use Mono2Micro’s Flicker tool to record use case labels and the start and stop times of when that use case or scenario was run. 
+

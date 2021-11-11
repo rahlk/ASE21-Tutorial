@@ -1,5 +1,0 @@
-SnoopServlet,partition1
-HitCount,partition0
-IncrementAction,partition0
-IncrementSSB,partition0
-Increment,partition0

@@ -1,2 +1,0 @@
-ApplicationName= Application
-CardinalUtilOutPath= application/src/main/java
