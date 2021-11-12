@@ -1,0 +1,18 @@
+[
+    {
+        "offset": 0,
+        "session": [
+            {
+                "STOP": 1636658353973,
+                "LABEL": "SNOOP",
+                "START": 1636658282501
+            },
+            {
+                "STOP": 1636658467744,
+                "LABEL": "HITCOUNT",
+                "START": 1636658378886
+            }
+        ],
+        "appserver": ""
+    }
+]
