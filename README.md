@@ -85,7 +85,7 @@ The following prerequisites must be completed prior to beginning this lab:
 - A UNIX based operating system (windows users please enable [WSL support](https://docs.microsoft.com/en-us/windows/wsl/install))
 - The latest Docker (3.5.2)
 - Git CLI (needed to clone the GitHub repo)
-- Java 1.8.0
+- Java 1.8.0 (or above)
 - Maven 3.6.3 (or above)
 - 3 GB free storage for the Mono2Micro Docker images and containerized microservices
 
@@ -125,6 +125,16 @@ _NOTE: Windows users, please use WSL._
     ```sh
     git clone https://github.com/rahlk/ASE21-Tutorial
     ```
+
+5. Verify Java and Maven installations
+   
+   ```sh
+   java -version
+   mvn -version
+   ```
+
+   You should see something akin to this:
+   ![image](https://user-images.githubusercontent.com/1433964/141499272-172c1ce0-bc46-47b4-929b-7b51006cae95.png)
 
 ### Sample Application
 
