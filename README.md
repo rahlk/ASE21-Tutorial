@@ -351,20 +351,20 @@ Let's take a quick look at all the data we have generated so far:
 
 4. Let's put all the files in a location we can access for the next step
    
-   a. Let's go back to the root folder, and make dir `application-data` with three sub-directories: `logs`,`contexsts`, and `tables`.
+   a. Let's go back to the `defaultapplication` folder, and make dir `application-data` with three sub-directories: `logs`,`contexsts`, and `tables`.
    ```sh
-   cd path/to/ASE21-Tutorial/root/
+   cd path/to/ASE21-Tutorial/defaultapplication/
 
    mkdir -p application-data/contexts application-data/logs application-data/tables
    ```
    
    b. Let's move the respective files we generated to the folders:
    ```
-   cp defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
+   cp ../Flicker/context_*.json application-data/contexts/
    
-   cp Flicker/context_*.json application-data/contexts/
+   cp  ./monolith-klu/*.json application-data/tables/
    
-   cp  defaultapplication/monolith-klu/*.json application-data/tables/
+   cp  ./monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
    ```
 
       The `application-data` folder should look like so:
