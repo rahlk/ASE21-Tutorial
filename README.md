@@ -131,7 +131,7 @@ _NOTE: Windows users, please use WSL._
    
    ```sh
    cd ASE21-Tutorial/
-   export ASE21_TUTORIAL_REPO=$(pwd)
+   export TUTORIAL_REPO=$(pwd)
    ```
 
 6. Verify Java and Maven installations
