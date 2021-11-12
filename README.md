@@ -131,7 +131,7 @@ _NOTE: Windows users, please use WSL._
    
    ```sh
    cd ASE21-Tutorial/
-   export ASE21_TUTORIAL=$(pwd)
+   export ASE21_TUTORIAL_REPO=$(pwd)
    ```
 
 6. Verify Java and Maven installations
@@ -165,15 +165,15 @@ In this part of the tutorial, you will run **BlueJay** , which instruments the m
 To run BlueJay, we use the following command:
 
   ```sh
-  docker run -e LICENSE=accept --rm -it -v $ASE21_TUTORIAL/defaultapplication/:/var/application ibmcom/mono2micro-bluejay /var/application/monolith out
+  docker run -e LICENSE=accept --rm -it -v $ASE21_TUTORIAL_REPO/defaultapplication/:/var/application ibmcom/mono2micro-bluejay /var/application/monolith out
   ```
 ![image](https://user-images.githubusercontent.com/1433964/141353131-c6e91b95-a42e-412f-9dfb-5abef19714f6.png)
 
 __Note: The command displays the directory where the output files were generated, as illustrated below.__
 
-In this example: `$ASE21_TUTORIAL/defaultapplication/monolith-klu`
+In this example: `$ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu`
 
-If you look inside `$ASE21_TUTORIAL/defaultapplication/monolith-klu`, you'll see the following:
+If you look inside `$ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu`, you'll see the following:
 ![image](https://user-images.githubusercontent.com/1433964/141353385-28ac669e-5f82-4620-b83c-1ff00e920a93.png)
 
 Bluejay creates two .json files in the in the monolith-klu directory:
@@ -193,7 +193,7 @@ These json file capture various details and metadata about each Java class such 
 You can look at the instrumentation in the code, for example:
 
 ```sh
-vim $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
+vim $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
 ```
 
 As illustrated below, you will find `System.out.println(…)` statements for the entry and exit of each method in the classes.
@@ -204,7 +204,7 @@ This trace data captures the Thread ID and Timestamp during the test case execut
 Finally, change the permissions on `monolith-klu` directory, so that it can be updated by the current user.
 
 ```sh
-sudo chmod -R 777 $ASE21_TUTORIAL/defaultapplication/monolith-klu
+sudo chmod -R 777 $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu
 ```
 
 ### Part 2: Collect runtime traces
@@ -218,7 +218,7 @@ As these use cases are run on the instrumented monolith application, you will us
 1) Go to the `-klu` directory first
 
    ```sh
-   cd $ASE21_TUTORIAL/defaultapplication/monolith-klu/
+   cd $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/
    ```
 
 2) Use maven to install the application
@@ -232,13 +232,13 @@ As these use cases are run on the instrumented monolith application, you will us
 3) Run the scripts below to start the Liberty server
 
    ```sh
-   $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server start DefaultApplicationServer
+   $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server start DefaultApplicationServer
    ```
 
    Now, check to see the server is running:
 
    ```sh
-   $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server status DefaultApplicationServer
+   $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server status DefaultApplicationServer
    ```
 
    You'll see the following:
@@ -269,7 +269,7 @@ _Note: The labels provided to Flicker for each use case should be meaningful as 
 1. Flicker can be found in the root directory of the [ASE21-Tutorial](https://github.com/rahlk/ASE21-Tutorial) repo you pulled. First, let's start the Flicker tool, using the command below:
 
    ```sh
-   cd $ASE21_TUTORIAL/Flicker
+   cd $ASE21_TUTORIAL_REPO/Flicker
 
    java -cp commons-net-3.6.jar:json-simple-1.1.jar:. Flicker -no_ntp
    ```
@@ -323,7 +323,7 @@ _Note: The labels provided to Flicker for each use case should be meaningful as 
    e. Finally, let's stop the server.
 
    ```sh
-   $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server stop DefaultApplicationServer
+   $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server stop DefaultApplicationServer
    ```
 
 #### Part 2.3 Review the gathered data
@@ -333,14 +333,14 @@ Let's take a quick look at all the data we have generated so far:
 1. Symbol and reference tables we obtained from [Part 1](#part-1-instrumenting-your-java-code-to-collect-runtime-traces).
 
     ```sh
-    ls -lh $ASE21_TUTORIAL/defaultapplication/monolith-klu
+    ls -lh $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu
     ```
    ![image](https://user-images.githubusercontent.com/1433964/141367164-ef29c39b-5e8f-42ad-bc41-2dc9a782be31.png)
 
 2. The context file that Flicker generated for the SNOOP and HITCOUNT test cases. This will be found in the flicker folder in the repository root in a file called `context_XXXXX.json`
 
     ```sh
-    cd $ASE21_TUTORIAL
+    cd $ASE21_TUTORIAL_REPO
 
     cat Flicker/context_1636658040657.json
     ```
@@ -351,7 +351,7 @@ Let's take a quick look at all the data we have generated so far:
 3. Finally, the liberty log file with the method entry and exit (which we obtain after running the instrumented code).
 
    ```sh
-   cat $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log
+   cat $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log
    ```
 
    ![Screen Shot 2021-11-11 at 3 44 58 PM](https://user-images.githubusercontent.com/1433964/141366530-8fcbd128-6fc6-43de-acf4-0b24f0691e53.png)
@@ -360,18 +360,18 @@ Let's take a quick look at all the data we have generated so far:
    
    a. Let's go back to the `defaultapplication` folder, and make dir `application-data` with three sub-directories: `logs`,`contexsts`, and `tables`.
    ```sh
-   cd $ASE21_TUTORIAL
+   cd $ASE21_TUTORIAL_REPO
 
-   mkdir -p $ASE21_TUTORIAL/defaultapplication/application-data/contexts $ASE21_TUTORIAL/defaultapplication/application-data/logs $ASE21_TUTORIAL/defaultapplication/application-data/tables
+   mkdir -p $ASE21_TUTORIAL_REPO/defaultapplication/application-data/contexts $ASE21_TUTORIAL_REPO/defaultapplication/application-data/logs $ASE21_TUTORIAL_REPO/defaultapplication/application-data/tables
    ```
    
    b. Let's move the respective files we generated to the folders:
    ```sh
-   cp $ASE21_TUTORIAL/Flicker/context_*.json application-data/contexts/
+   cp $ASE21_TUTORIAL_REPO/Flicker/context_*.json application-data/contexts/
    
-   cp  $ASE21_TUTORIAL/defaultapplication/monolith-klu/*.json application-data/tables/
+   cp  $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/*.json application-data/tables/
    
-   cp  $ASE21_TUTORIAL/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
+   cp  $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
    ```
 
       The `application-data` folder should look like so:
