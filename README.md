@@ -193,7 +193,7 @@ These json file capture various details and metadata about each Java class such 
 You can look at the instrumentation in the code, for example:
 
 ```sh
-vim $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
+cat $ASE21_TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
 ```
 
 As illustrated below, you will find `System.out.println(…)` statements for the entry and exit of each method in the classes.
