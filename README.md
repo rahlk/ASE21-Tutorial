@@ -369,9 +369,9 @@ Let's take a quick look at all the data we have generated so far:
    ```sh
    cp $TUTORIAL_REPO/Flicker/context_*.json application-data/contexts/
    
-   cp  $TUTORIAL_REPO/defaultapplication/monolith-klu/*.json application-data/tables/
+   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/*.json application-data/tables/
    
-   cp  $TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
+   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
    ```
 
       The `application-data` folder should look like so:
