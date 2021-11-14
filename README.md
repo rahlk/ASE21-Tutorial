@@ -52,7 +52,7 @@ In this session, we will go through methodologies for analyzing application code
 
 **Presenter:** Anup Kalia
 
-**Slides:** TBD
+**Slides:** https://github.com/kaliaanup/ASE21-Tutorial/blob/add_slides/Mono2Micro-Tutorial-ASE-v1.pptx
 
 ### Session 3: Automated Conﬁguration Discovery
 
