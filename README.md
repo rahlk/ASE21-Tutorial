@@ -26,6 +26,7 @@
     - [Part 4. Visualizing partitions the Mono2Mirco UI](#part-4-visualizing-partitions-the-mono2mirco-ui)
         - [Part 4.1 Viewing the partitions](#part-41-viewing-the-partitions)
         - [Part 4.2 Customizing & Adjusting Partitions](#part-42-customizing--adjusting-partitions)
+        - [Part 4.3 Regenerating the partitions by rerunning AIPL against the customized graph](#part-43-regenerating-the-partitions-by-rerunning-aipl-against-the-customized-graph)
 
 ## Why this tutorial matters?
 
@@ -264,7 +265,7 @@ These use cases are _run on the instrumented monolith application_.
 
 You will now use Mono2Micro’s **Flicker** tool to record use case labels and the start and stop times of when that use case or scenario was run.
 
-> ***What is Flicker?*** Flicker essentially acts like a stopwatch to record use cases. It is a simple Java based tool that prompts the user for the use case label, and then records the start time. Then prompts again for the stop command after the user finishes running that scenario on the monolith.
+> :bulb: ***What is Flicker?*** Flicker essentially acts like a stopwatch to record use cases. It is a simple Java based tool that prompts the user for the use case label, and then records the start time. Then prompts again for the stop command after the user finishes running that scenario on the monolith.
 
 _Note: The labels provided to Flicker for each use case should be meaningful as this will come into play later when viewing Mono2Micro’s AI analysis where the classes and flow within the code is associated with the use case labels._
 
@@ -448,7 +449,7 @@ In the last section, you will use the mono2micro UI to view and manipulate the p
 
    ![image](https://user-images.githubusercontent.com/1433964/141662401-f3cf92d7-9c42-4768-8b18-8280ed44cfcc.png)
 
-   d. From the UI, click the X to SKIP the tour, and proceed to the results.
+   d. From the UI, click 'Maybe Later' to SKIP the tour, and proceed to the results.
 
    e. As illustrated below, the UI displays the initial recommendations for partitioning the application into microservices. From the UI, you can explore the partition recommendations.
 
@@ -457,4 +458,88 @@ In the last section, you will use the mono2micro UI to view and manipulate the p
 
 ##### Part 4.2 Customizing & Adjusting Partitions
 
-In this section of the lab, you use the Mono2Micro UI and tweak the graph to the desired state. 
+In this section of the lab, you use the Mono2Micro UI and tweak the graph to the desired state.
+
+1. Select a desired node from the current graph and move it to a different partition.
+   1. On the left pane, select 'View by' and choose 'custom'
+
+      ![Screen Shot 2021-11-14 at 3 54 24 PM](https://user-images.githubusercontent.com/1433964/141698292-9e8dd261-879a-40be-b14e-d8be201e97ae.png)
+   
+   2. If asked, select either 'Business Logic' or 'Natural seams':
+
+      ![image](https://user-images.githubusercontent.com/1433964/141698347-b48d0169-d817-4082-b14f-690447016b94.png)
+   
+   3. Now, add any unobserved classes:
+
+      ![Screen Shot 2021-11-14 at 4 01 36 PM](https://user-images.githubusercontent.com/1433964/141698522-d5fdaf26-ed13-4176-99ec-da8d58cf02e9.png)
+
+      ![Screen Shot 2021-11-14 at 4 03 04 PM](https://user-images.githubusercontent.com/1433964/141698521-67fbf13f-7665-4012-b114-62e291389d71.png)
+
+   4. Add it to one of your partitions (you can drag/drop it any partitions you like):
+      ![Screen Shot 2021-11-14 at 4 04 53 PM](https://user-images.githubusercontent.com/1433964/141698579-1f57cecb-5ba0-4c28-a1b7-a2027cb59caa.png)
+
+   5. Click on the Save icon to save the updated custom view. The customized `final_graph.json` file is **saved to the Downloads folder**. 
+
+      ![Screen Shot 2021-11-14 at 4 06 35 PM](https://user-images.githubusercontent.com/1433964/141698638-b98d43b2-bc3b-4497-a892-9228d1f9d0f1.png)
+
+
+##### Part 4.3 Regenerating the partitions by rerunning AIPL against the customized graph
+
+1. Copy the customized final_graph.json file from users Downloads folder to a known location by Mono2Micro’s AIPL tool, and name it `custom_graph.json`
+   
+   > :exclamation: By default, the AIPL tool will look in the root directory of the `application-data` folder where the contexts, logs, and tables are located. 
+
+   So, let's first copy the customized graph to this folder, and rename it to `custom-graph.json` to make it obvious:
+
+   ```sh
+   cp ~/Downloads/final_graph.json $TUTORIAL_REPO/defaultapplication/application-data/custom_graph.json 
+
+   cd $TUTORIAL_REPO/defaultapplication/application-data
+   ```
+   ![Screen Shot 2021-11-14 at 4 24 20 PM](https://user-images.githubusercontent.com/1433964/141699174-fe51a219-7c17-4573-8148-e5da52e9dd7a.png)
+
+2. From the same folder as the `custom-graph.json` (i.e., `$TUTORIAL_REPO/defaultapplication/application-data/`), modify the permissions for config.ini so that we have write permissions:
+   
+   ```sh
+   cd $TUTORIAL_REPO/defaultapplication/application-data/
+   
+   sudo chmod 777 ./config.ini 
+   ```
+
+3. Edit the `config.ini` file to reference the new custom_graph.json file to be used for regenerating the partition recommendations.
+   
+      a. Modify the config.ini by changing the value for the UserModifiedGraph property to `custom_graph.json`.
+
+      ![Screen Shot 2021-11-14 at 4 56 19 PM](https://user-images.githubusercontent.com/1433964/141700179-b3479f51-e615-41e4-9f2b-4fc791408eec.png)
+
+      b. Save and close the `custom_graph.json`
+
+4. Rerun the AIPL tool with the `regen_p` option to generate the partitioning recommendations based on the updated graph file. 
+   
+   ```sh
+   docker run -e LICENSE=accept --rm -it -v $TUTORIAL_REPO/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl
+   ```
+
+   **Note:** *AIPL created a new folder based on the user modified graph in the following directory: `$TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-user-modified`*
+
+      a. List the files/folders of the generated directory.
+
+      ```sh
+      ls -l $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-user-modified
+      ```
+
+      ![image](https://user-images.githubusercontent.com/1433964/141700379-c82f6246-b94e-4976-a225-c7b824113ec1.png)
+
+      b. View the generated Cardinal report to verify the partitions and exposed services are defined as expected. 
+
+      ```sh
+      cd  $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-user-modified
+
+      open ./Cardinal-Report-Modified.html
+      ```
+
+      ![Screen Shot 2021-11-14 at 5 07 54 PM](https://user-images.githubusercontent.com/1433964/141700536-60c1d3a4-9146-43f2-9bcc-9229499c1694.png)
+
+
+
+

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en-us">
+<style type="text/css">a {text-decoration: none}</style>
+<style type="text/css">a:hover {text-decoration: underline}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="expires" content="0">
+<title> Mono2Micro Partition Business Use Case Analysis - Application   </title>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+ 
+
+<style>  
+	.report_title { 
+	  padding-top: 2%;
+	  padding-bottom: 1%;
+	  display: block;
+	  overflow: hidden; 
+	  font-size: 30px;
+	  color: black;
+	  position: relative;
+  	  left: 10%;
+	  font-weight: bolder;	  
+	}
+	.version { 
+	  padding-top: 2%;
+	  padding-bottom: 1%;
+	  display: block;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;
+  	  left: 10%;
+	  
+	}
+	.collapsible {  
+	  cursor: pointer; 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  border: none;
+	  text-align: left;
+	  outline: none; 
+	  font-size: 20px;  
+	  position: relative;
+  	  left: 25%;	
+	} 
+
+
+	.summary {  
+	  background-color: whitesmoke;
+	  color: black;
+	  cursor: pointer; 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  border: none;
+	  text-align: left;
+	  outline: none; 
+	  font-size: 20px;  
+	  position: relative;
+  	  left: 25%;	
+	}
+
+	.jclass {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;   
+	  font-weight: bold;
+	}
+
+	.jfunction {  
+	  display: list-item;
+	  overflow: hidden; 
+	  font-size: 15px;
+	  color: black;
+	  position: relative;  
+	  padding-left: 2%;  
+	}	
+
+	.partition_header{   
+	  background-color: whitesmoke;
+	  color: black;
+	  cursor: pointer;
+	  padding-left: 2%;
+	  padding-top: 15px;
+	  padding-bottom: 15px;
+	  width: 80%;
+	  border: none;
+	  text-align: left;
+	  outline: none;
+	  font-size: 20px;
+	  font-weight: bold;  
+	  position: relative;
+  	  left: 10%;
+	}	
+
+	.summary_title{     
+	  cursor: pointer; 
+	  padding-top: 15px;
+	  padding-bottom: 15px;  
+	  text-align: left;  
+	  font-size: 20px;
+	  
+	}	
+
+	.extra {
+		background-color: #e6ecff;
+		color: black;
+
+	}
+
+	.arrow { 
+		color: black;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<div>
+		<h1 class="report_title"> Mono2Micro Business Use Case Partition Analysis - Application </h1> 
+		<br>
+	</div>  
+
+	<div class="bx--row">
+		<div class="bx--col bx--col-lg-8">
+		  <div class="bx--tile  partition_header"> <h4> Summary </h4> </div>
+		</div>
+	</div>
+ 
+	<ul data-accordion class="bx--accordion bx--col-lg-8">
+		<li data-accordion-item class="bx--accordion__item collapsible">
+			<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+				<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+				<div class="bx--accordion__title "> Business Use Cases per Partition </div>
+			</button>
+
+			<div id="pane1" class="bx--accordion__content">
+			<br>  
+				<section class="bx--structured-list" >
+					<div class="bx--structured-list-thead">
+						<div class="bx--structured-list-row bx--structured-list-row--header-row">
+							<div class="bx--structured-list-th">Partition Name</div>
+							<div class="bx--structured-list-th"># of Classes </div>
+							<div class="bx--structured-list-th"># of Business Use Cases</div>
+							<div class="bx--structured-list-th">Business Use Cases</div>
+						</div>
+					</div>
+				 
+					<div class="bx--structured-list-tbody">
+
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#partition1"> partition1 </a></div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> SNOOP (unique to this partition) </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#Unobserved"> Unobserved </a></div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> Unobserved </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						 
+						<div class="bx--structured-list-row">
+						 
+							<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> <a href="#partition0"> partition0 </a></div>
+							<div class="bx--structured-list-td"> 4 </div>
+							<div class="bx--structured-list-td"> 1 </div>
+							<div class="bx--structured-list-td">
+								 
+								 
+								<ul class="bx--list--unordered bx--list--nested">
+									
+										<li class="bx--list__item"> HITCOUNT (unique to this partition) </li>
+									
+								</ul>
+								
+							</div>
+ 
+						</div>
+						
+
+					</div>
+				</section>
+			</div>
+		</li>
+	</ul>
+ 
+   
+
+	 
+
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="partition0"> <h4> partition0 </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 4 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> HitCount  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> HITCOUNT </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> IncrementAction  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> HITCOUNT </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> IncrementSSB  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> HITCOUNT </li>
+								
+								</div>
+								 
+							</div>
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> Increment  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> HITCOUNT </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="partition1"> <h4> partition1 </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 1 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> SnoopServlet  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> SNOOP </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	 
+		<div class="bx--row">
+			<div class="bx--col bx--col-lg-8">
+			  <div class="bx--tile  partition_header" id="Unobserved"> <h4> Unobserved </h4> </div>
+			</div>
+		</div>
+
+		<ul data-accordion class="bx--accordion bx--col-lg-8">
+
+			<li data-accordion-item class="bx--accordion__item collapsible">
+				<button class="bx--accordion__heading extra" aria-expanded="false" aria-controls="pane1">
+					<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+					<div class="bx--accordion__title ">  Member Class Details ( 1 )  </div>
+				</button>
+				<div id="pane1" class="bx--accordion__content">
+					<br>  
+					<section class="bx--structured-list" class="tab"> 
+						<div class="bx--structured-list-thead">
+							<div class="bx--structured-list-row bx--structured-list-row--header-row">
+								<div class="bx--structured-list-th">Class Name</div>
+								<div class="bx--structured-list-th"># of Business Use Cases</div>
+								<div class="bx--structured-list-th">Business Use Cases</div>
+							</div>
+						</div>
+
+						<div class="bx--structured-list-tbody">
+							
+							 
+							<div class="bx--structured-list-row">
+								<div class="bx--structured-list-td bx--structured-list-content--nowrap jclass"> EndpointIT  </div>
+								<div class="bx--structured-list-td"> 1 </div>
+								<div class="bx--structured-list-td">
+								
+									<li class="jfunction"> Unobserved </li>
+								
+								</div>
+								 
+							</div>
+							
+							  
+						</div>
+					</section>
+				</div>
+			</li> 
+		</ul> 
+	
+	 <div class="bx--structured-list-td bx--accordion__title version"> aipl_version: v2.0.0r26 </div>
+</body>
+</html>
+
+
+ 
