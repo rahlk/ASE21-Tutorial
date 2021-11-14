@@ -1,0 +1,19 @@
+{
+    "HITCOUNT": {
+        "HitCount--HitCount": 1,
+        "HitCount--IncrementAction": 1,
+        "IncrementAction--HitCount": 1,
+        "IncrementAction--IncrementSSB": 1,
+        "IncrementSSB--IncrementAction": 1,
+        "IncrementSSB--Increment": 1,
+        "Increment--IncrementSSB": 1,
+        "IncrementAction--IncrementAction": 1,
+        "IncrementAction--Increment": 1,
+        "Increment--IncrementAction": 1,
+        "HitCount--Increment": 1,
+        "Increment--HitCount": 1
+    },
+    "SNOOP": {
+        "SnoopServlet--SnoopServlet": 1
+    }
+}

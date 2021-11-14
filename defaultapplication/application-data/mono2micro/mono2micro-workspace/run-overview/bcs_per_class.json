@@ -1,0 +1,21 @@
+{
+    "$Root$": [
+        "SNOOP",
+        "HITCOUNT"
+    ],
+    "SnoopServlet": [
+        "SNOOP"
+    ],
+    "HitCount": [
+        "HITCOUNT"
+    ],
+    "IncrementAction": [
+        "HITCOUNT"
+    ],
+    "IncrementSSB": [
+        "HITCOUNT"
+    ],
+    "Increment": [
+        "HITCOUNT"
+    ]
+}

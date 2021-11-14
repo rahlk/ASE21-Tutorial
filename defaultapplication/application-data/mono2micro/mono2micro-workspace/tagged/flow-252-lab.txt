@@ -1,0 +1,5 @@
+1636658421280,HITCOUNT,$Root$ calls HitCount,<None>:$Root$:<None>,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:service
+1636658421285,HITCOUNT,HitCount returns to $Root$,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:service,<None>:$Root$:<None>
+1636658445898,HITCOUNT,$Root$ calls HitCount,<None>:$Root$:<None>,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:service
+1636658445898,HITCOUNT,HitCount calls HitCount,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:service,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:incrementSession
+1636658445898,HITCOUNT,HitCount returns to HitCount,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:incrementSession,monolith/DefaultWebApplication/src/main/java/HitCount.java:HitCount:service

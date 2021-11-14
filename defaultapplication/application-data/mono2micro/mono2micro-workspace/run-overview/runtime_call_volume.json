@@ -1,0 +1,12 @@
+{
+    "$Root$--SnoopServlet": 25,
+    "SnoopServlet--SnoopServlet": 3421,
+    "$Root$--HitCount": 12,
+    "HitCount--HitCount": 12,
+    "HitCount--IncrementAction": 8,
+    "IncrementAction--IncrementSSB": 8,
+    "IncrementSSB--Increment": 52,
+    "IncrementAction--IncrementAction": 1,
+    "IncrementAction--Increment": 9,
+    "HitCount--Increment": 2
+}

@@ -1,0 +1,74 @@
+{
+    "mono_data_dependency_graph": {
+        "nodes": [
+            {
+                "name": "EndpointIT",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith/DefaultApplication-ear/src/test/java/wasdev/DefaultApplication/it/EndpointIT.java",
+                "semantics": []
+            },
+            {
+                "name": "HitCount",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith/DefaultWebApplication/src/main/java/HitCount.java",
+                "semantics": []
+            },
+            {
+                "name": "SnoopServlet",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith/DefaultWebApplication/src/main/java/SnoopServlet.java",
+                "semantics": []
+            },
+            {
+                "name": "Increment",
+                "group": 0,
+                "category": "default_group",
+                "filepath": "monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/Increment.java",
+                "semantics": []
+            },
+            {
+                "name": "IncrementAction",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementAction.java",
+                "semantics": []
+            },
+            {
+                "name": "IncrementSSB",
+                "group": 1,
+                "category": "data_dep_island_0",
+                "filepath": "monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementSSB.java",
+                "semantics": []
+            }
+        ],
+        "links": [
+            {
+                "source": "IncrementAction",
+                "target": "IncrementSSB",
+                "value": "1"
+            }
+        ],
+        "overview": {
+            "nodes": [
+                {
+                    "name": "data_dep_island_0",
+                    "group": 0,
+                    "category": "data_dep_island_0",
+                    "filepath": "data_dep_island_0",
+                    "semantics": []
+                },
+                {
+                    "name": "default_group",
+                    "group": 1,
+                    "category": "default_group",
+                    "filepath": "default_group",
+                    "semantics": []
+                }
+            ],
+            "links": []
+        }
+    }
+}

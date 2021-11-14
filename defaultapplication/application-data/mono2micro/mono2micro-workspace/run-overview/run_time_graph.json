@@ -1,0 +1,121 @@
+{
+    "nodes": [
+        {
+            "name": "SnoopServlet",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultWebApplication/src/main/java/SnoopServlet.java",
+            "semantics": [
+                "SNOOP"
+            ]
+        },
+        {
+            "name": "HitCount",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultWebApplication/src/main/java/HitCount.java",
+            "semantics": [
+                "HITCOUNT"
+            ]
+        },
+        {
+            "name": "IncrementAction",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementAction.java",
+            "semantics": [
+                "HITCOUNT"
+            ]
+        },
+        {
+            "name": "IncrementSSB",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/IncrementSSB.java",
+            "semantics": [
+                "HITCOUNT"
+            ]
+        },
+        {
+            "name": "Increment",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/Increment.java",
+            "semantics": [
+                "HITCOUNT"
+            ]
+        },
+        {
+            "name": "EndpointIT",
+            "group": 1,
+            "category": "Undefined",
+            "construct": "Class",
+            "FQCN": "",
+            "filepath": "Class, monolith/DefaultApplication-ear/src/test/java/wasdev/DefaultApplication/it/EndpointIT.java",
+            "semantics": []
+        }
+    ],
+    "links": [
+        {
+            "source": "HitCount",
+            "target": "IncrementAction",
+            "method": {
+                "increment": 4,
+                "getTheValue": 4
+            },
+            "value": 3.079
+        },
+        {
+            "source": "HitCount",
+            "target": "Increment",
+            "method": {
+                "getPrimarykey": 1,
+                "setThevalue": 1
+            },
+            "value": 1.693
+        },
+        {
+            "source": "IncrementAction",
+            "target": "IncrementSSB",
+            "method": {
+                "increment": 4,
+                "getTheValue": 4
+            },
+            "value": 3.079
+        },
+        {
+            "source": "IncrementAction",
+            "target": "Increment",
+            "method": {
+                "getPrimarykey": 3,
+                "getThevalue": 2,
+                "Increment": 1,
+                "setPrimarykey": 1,
+                "setThevalue": 2
+            },
+            "value": 3.197
+        },
+        {
+            "source": "IncrementSSB",
+            "target": "Increment",
+            "method": {
+                "Increment": 9,
+                "getPrimarykey": 8,
+                "setPrimarykey": 8,
+                "getThevalue": 15,
+                "setThevalue": 12
+            },
+            "value": 4.951
+        }
+    ]
+}

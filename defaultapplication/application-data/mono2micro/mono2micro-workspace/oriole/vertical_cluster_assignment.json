@@ -1,0 +1,21 @@
+{
+    "0": {
+        "classes": [
+            "IncrementAction",
+            "Increment",
+            "HitCount",
+            "IncrementSSB"
+        ],
+        "business_context": [
+            "HITCOUNT"
+        ]
+    },
+    "1": {
+        "classes": [
+            "SnoopServlet"
+        ],
+        "business_context": [
+            "SNOOP"
+        ]
+    }
+}

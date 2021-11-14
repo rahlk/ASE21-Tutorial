@@ -1,0 +1,32 @@
+{
+    "IncrementAction": {
+        "business_context": [
+            "HITCOUNT"
+        ],
+        "final": "0"
+    },
+    "Increment": {
+        "business_context": [
+            "HITCOUNT"
+        ],
+        "final": "0"
+    },
+    "SnoopServlet": {
+        "business_context": [
+            "SNOOP"
+        ],
+        "final": "1"
+    },
+    "HitCount": {
+        "business_context": [
+            "HITCOUNT"
+        ],
+        "final": "0"
+    },
+    "IncrementSSB": {
+        "business_context": [
+            "HITCOUNT"
+        ],
+        "final": "0"
+    }
+}

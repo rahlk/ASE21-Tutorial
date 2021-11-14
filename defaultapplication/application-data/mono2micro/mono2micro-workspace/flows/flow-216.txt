@@ -1,0 +1,2 @@
+1636658443031,$Root$ calls com.ibm.defaultapplication.HitCount,<None>:$Root$:<None>,monolith/DefaultWebApplication/src/main/java/HitCount.java:com.ibm.defaultapplication.HitCount:service(HttpServletRequest,HttpServletResponse)
+Remainder on Stack: $Root$,com.ibm.defaultapplication.HitCount,

@@ -1,6 +1,6 @@
 # Transforming Monolithic Applications to Microservices with Mono2Micro
 
-![](https://ibm-cloud-architecture.github.io/modernization-playbook/static/215a27d8fbf89d8d756427f855bc4f3a/e8c66/1-m2m.png)
+![introtext](https://ibm-cloud-architecture.github.io/modernization-playbook/static/215a27d8fbf89d8d756427f855bc4f3a/e8c66/1-m2m.png)
 
 ## Contents
 
@@ -17,13 +17,15 @@
     - [Setup](#setup)
     - [Sample Application](#sample-application)
   - [The Hands-on Lab](#the-hands-on-lab)
-    - [Part 1: Instrumenting your java code to collect runtime traces](#part-1-instrumenting-your-java-code-to-collect-runtime-traces)
+    - [Part 1: Instrumenting your Java code](#part-1-instrumenting-your-java-code)
     - [Part 2: Collect runtime traces](#part-2-collect-runtime-traces)
       - [Part 2.1 Build and package the instrumented version of the DefaultApplication](#part-21-build-and-package-the-instrumented-version-of-the-defaultapplication)
       - [Part 2.2 Run the test cases for the DefaultApplication](#part-22-run-the-test-cases-for-the-defaultapplication)
-        - [Digression: What's Flicker?](#digression-whats-flicker)
       - [Part 2.3 Review the gathered data](#part-23-review-the-gathered-data)
     - [Part 3. Partitioning the Monolith with AIPL](#part-3-partitioning-the-monolith-with-aipl)
+    - [Part 4. Visualizing partitions the Mono2Mirco UI](#part-4-visualizing-partitions-the-mono2mirco-ui)
+        - [Part 4.1 Viewing the partitions](#part-41-viewing-the-partitions)
+        - [Part 4.2 Customizing & Adjusting Partitions](#part-42-customizing--adjusting-partitions)
 
 ## Why this tutorial matters?
 
@@ -128,14 +130,14 @@ _NOTE: Windows users, please use WSL._
     ```
 
 5. Let's enter the cloned repository and save the location for future reference.
-   
+
    ```sh
    cd ASE21-Tutorial/
    export TUTORIAL_REPO=$(pwd)
    ```
 
 6. Verify Java and Maven installations
-   
+
    ```sh
    java -version
    mvn -version
@@ -158,7 +160,7 @@ There is also a front end component with a simple UI which includes the HTML, JS
 
 ## The Hands-on Lab
 
-### Part 1: Instrumenting your java code to collect runtime traces
+### Part 1: Instrumenting your Java code
 
 In this part of the tutorial, you will run **BlueJay** , which instruments the monolithic Java program to log entry and exit times in each method. In essense, it performs a static analysis  to gather a detailed overview of the Java code in the monolith, for use by Mono2Micro’s AI analyzer tool to come up with recommendations on how to partition the monolith application.
 
@@ -167,6 +169,7 @@ To run BlueJay, we use the following command:
   ```sh
   docker run -e LICENSE=accept --rm -it -v $TUTORIAL_REPO/defaultapplication/:/var/application ibmcom/mono2micro-bluejay /var/application/monolith out
   ```
+
 ![image](https://user-images.githubusercontent.com/1433964/141353131-c6e91b95-a42e-412f-9dfb-5abef19714f6.png)
 
 __Note: The command displays the directory where the output files were generated, as illustrated below.__
@@ -226,6 +229,7 @@ As these use cases are run on the instrumented monolith application, you will us
    ```sh
    mvn clean install
    ```
+
    After this, you'll see a `BUILD SUCCESS`, like so:
   ![image](https://user-images.githubusercontent.com/1433964/141352777-34041df0-cfd9-414d-83f9-3d48b9a153f6.png)
 
@@ -260,9 +264,7 @@ These use cases are _run on the instrumented monolith application_.
 
 You will now use Mono2Micro’s **Flicker** tool to record use case labels and the start and stop times of when that use case or scenario was run.
 
-##### Digression: What's Flicker?
-
-The Flicker tool essentially acts like a stopwatch to record use cases. It is a simple Java based tool that prompts the user for the use case label, and then records the start time. Then prompts again for the stop command after the user finishes running that scenario on the monolith.
+> ***What is Flicker?*** Flicker essentially acts like a stopwatch to record use cases. It is a simple Java based tool that prompts the user for the use case label, and then records the start time. Then prompts again for the stop command after the user finishes running that scenario on the monolith.
 
 _Note: The labels provided to Flicker for each use case should be meaningful as this will come into play later when viewing Mono2Micro’s AI analysis where the classes and flow within the code is associated with the use case labels._
 
@@ -335,6 +337,7 @@ Let's take a quick look at all the data we have generated so far:
     ```sh
     ls -lh $TUTORIAL_REPO/defaultapplication/monolith-klu
     ```
+
    ![image](https://user-images.githubusercontent.com/1433964/141367164-ef29c39b-5e8f-42ad-bc41-2dc9a782be31.png)
 
 2. The context file that Flicker generated for the SNOOP and HITCOUNT test cases. This will be found in the flicker folder in the repository root in a file called `context_XXXXX.json`
@@ -357,24 +360,101 @@ Let's take a quick look at all the data we have generated so far:
    ![Screen Shot 2021-11-11 at 3 44 58 PM](https://user-images.githubusercontent.com/1433964/141366530-8fcbd128-6fc6-43de-acf4-0b24f0691e53.png)
 
 4. Let's put all the files in a location we can access for the next step
-   
+
    a. Let's go back to the `defaultapplication` folder, and make dir `application-data` with three sub-directories: `logs`,`contexsts`, and `tables`.
+
    ```sh
    cd $TUTORIAL_REPO
 
    mkdir -p $TUTORIAL_REPO/defaultapplication/application-data/contexts $TUTORIAL_REPO/defaultapplication/application-data/logs $TUTORIAL_REPO/defaultapplication/application-data/tables
    ```
-   
+
    b. Let's move the respective files we generated to the folders:
+
    ```sh
-   cp $TUTORIAL_REPO/Flicker/context_*.json application-data/contexts/
+   cp $TUTORIAL_REPO/Flicker/context_*.json $TUTORIAL_REPO/defaultapplication/application-data/contexts/
    
-   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/*.json application-data/tables/
+   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/*.json $TUTORIAL_REPO/defaultapplication/application-data/tables/
    
-   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log application-data/logs
+   cp $TUTORIAL_REPO/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log $TUTORIAL_REPO/defaultapplication/application-data/logs
    ```
 
       The `application-data` folder should look like so:
       ![image](https://user-images.githubusercontent.com/1433964/141507484-f92d5c69-a49a-4e87-bf70-82f9d367e89f.png)
 
 ### Part 3. Partitioning the Monolith with AIPL
+
+Once you have completed the data collection process for the Java monolith under consideration, you can feed the data to the AIPL tool to generate microservices recommendations.
+
+1. Let's change the directory to application-data directory.
+
+   ```sh
+   cd $TUTORIAL_REPO/defaultapplication/application-data/
+   ```
+
+2. Run the AIPL tool, using the following command:
+
+   ```sh
+   docker run -e LICENSE=accept --rm -it -v $TUTORIAL_REPO/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl
+   ```
+
+   When this finishes, you'll see the following:
+   ![image](https://user-images.githubusercontent.com/1433964/141658700-73fabcbb-f1ff-48c5-9415-d123dc3c3621.png)
+
+   Here are some of the notable files generated by Mono2Micro:
+
+      a. **Cardinal-Report.html** is a detailed report of all the application partitions, their member classes, outward facing classes, etc
+
+      ```sh
+      $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-output/Cardinal-Report.html
+      ```
+
+      b. **Oriole-Report.html** is a summary report of all the application partitions and their associated business use cases
+
+      ```sh
+      $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-output/Oriole-Report.html
+      ```
+
+      c. **final_graph.json** is the full set of application partition recommendations (natural seams and business logic) and associated details, viewable in the Mono2Micro UI
+
+      ```sh
+      $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-output/oriole/final_graph.json
+      ```
+
+      d. **cardinal/** is a folder that contains a complete set of input files (based on the partitioning) for the next and last stage of the Mono2Micro pipeline, running the code generator
+
+      ```sh
+      $TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-output/cardinal/
+      ```
+
+### Part 4. Visualizing partitions the Mono2Mirco UI
+
+In the last section, you will use the mono2micro UI to view and manipulate the partitioning recommendations generated from the AIPL tool.
+
+##### Part 4.1 Viewing the partitions
+
+   First, let’s take a look at the partitioning recommendations Mono2Micro generated by loading the `final_graph.json` in the graph UI. 
+
+   a.	Launch the Mono2Micro UI using the following command:
+
+   ```sh
+   docker run -d -e LICENSE=accept -p 3000:3000 --name=m2mgui ibmcom/mono2micro-ui
+   ```
+
+   b. Go to [localhost:3000](http://localhost:3000/) on your browser, and you will see the following UI:
+   ![Screen Shot 2021-11-13 at 6 55 44 PM](https://user-images.githubusercontent.com/1433964/141662438-1da36f1c-9fc5-43bd-9356-fb15ce753625.png)
+
+   c. From the UI, click to add the `final-graph.json` file (you'll find this in `$TUTORIAL_REPO/defaultapplication/application-data/mono2micro/mono2micro-output/oriole/final-graph.json`)
+
+   ![image](https://user-images.githubusercontent.com/1433964/141662401-f3cf92d7-9c42-4768-8b18-8280ed44cfcc.png)
+
+   d. From the UI, click the X to SKIP the tour, and proceed to the results.
+
+   e. As illustrated below, the UI displays the initial recommendations for partitioning the application into microservices. From the UI, you can explore the partition recommendations.
+
+   ![image](https://user-images.githubusercontent.com/1433964/141662497-b5f00d33-a99b-4344-9279-686d8604e28b.png)   
+
+
+##### Part 4.2 Customizing & Adjusting Partitions
+
+In this section of the lab, you use the Mono2Micro UI and tweak the graph to the desired state. 

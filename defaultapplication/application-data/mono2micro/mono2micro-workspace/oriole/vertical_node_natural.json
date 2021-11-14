@@ -1,0 +1,8 @@
+{
+    "EndpointIT": "Unobserved",
+    "HitCount": "partition0",
+    "SnoopServlet": "partition1",
+    "Increment": "partition0",
+    "IncrementAction": "partition0",
+    "IncrementSSB": "partition0"
+}
