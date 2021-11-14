@@ -473,7 +473,7 @@ In this section of the lab, you use the Mono2Micro UI and tweak the graph to the
 
       ![Screen Shot 2021-11-14 at 4 01 36 PM](https://user-images.githubusercontent.com/1433964/141698522-d5fdaf26-ed13-4176-99ec-da8d58cf02e9.png)
 
-      ![Screen Shot 2021-11-14 at 4 03 04 PM](https://user-images.githubusercontent.com/1433964/141698521-67fbf13f-7665-4012-b114-62e291389d71.png)
+      ![image](https://user-images.githubusercontent.com/1433964/141700698-e266fda1-e877-4755-bf4b-3968b2adb3df.png)
 
    4. Add it to one of your partitions (you can drag/drop it any partitions you like):
       ![Screen Shot 2021-11-14 at 4 04 53 PM](https://user-images.githubusercontent.com/1433964/141698579-1f57cecb-5ba0-4c28-a1b7-a2027cb59caa.png)
