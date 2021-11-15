@@ -52,7 +52,7 @@ In this session, we will go through methodologies for analyzing application code
 
 **Presenter:** Anup Kalia
 
-**Slides:** https://github.com/kaliaanup/ASE21-Tutorial/blob/add_slides/Mono2Micro-Tutorial-ASE-v1.pptx
+**Slides:** [Session 2 Slides](sessions/Mono2Micro-Tutorial-ASE-v1.pptx)
 
 ### Session 3: Automated Conﬁguration Discovery
 
@@ -60,7 +60,7 @@ This session is about managing the configuration of refactored monolithic apps. 
 
 **Presenter:** John Rofrano
 
-**Slides:** TBD
+**Slides:** [Session 3 Slides](sessions/Tackle-Config-Discovery-Overview.pdf)
 
 ### Session 4: Validating Transformed Applications
 
