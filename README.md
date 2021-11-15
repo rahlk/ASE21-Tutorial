@@ -91,6 +91,9 @@ The following prerequisites must be completed prior to beginning this lab:
 - Git CLI (needed to clone the GitHub repo)
 - Java 1.8.0 (or above)
 - Maven 3.6.3 (or above)
+  
+  _Note: We recommend using [SDKMan](https://sdkman.io/)_
+
 - 3 GB free storage for the Mono2Micro Docker images and containerized microservices
 
 ### Setup
